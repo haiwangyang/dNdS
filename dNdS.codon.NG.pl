@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 use Bio::Perl;
-use lib "/home/ywu/program/perl_lib/alignDB/lib";
+use lib "/home/haiwangyang/program/perl_lib/alignDB/lib";
 use YAML qw(Dump Load DumpFile LoadFile);
 use AlignDB::IntSpan;
 use AlignDB::Util;
