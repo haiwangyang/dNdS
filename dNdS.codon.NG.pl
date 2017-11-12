@@ -35,14 +35,13 @@ my %Codon1_Codon2_syn_non_num_info = get_Codon1_Codon2_syn_non_num_info();
 ### calculate dNdS for CDS fasta files in current folder
 ########################################################
 open W, ">dNdS_Results.csv";
-print W "gene\tka/ks_t\tka_t\tks_t\tka/ks_d\tka_d\tks_d\tka/ks_w\tka_w\tks_w\n";
-foreach my $file (glob "*.fa"){
-    (my $gene = $file ) =~ s/.fa$//g;
-    print "now in $gene\n";
-    my %name2seq = get_hash_in_fasta($gene);
+print W "filename\tdNdS\tdN\tdS\n";
+foreach my $filename (glob "*.fa"){
+    print "now in $filename\n";
+    my %name2seq = get_hash_in_fasta($filename);
     my @seqs = values %name2seq;
     my ($dn_ds,$dn,$ds) = get_dn_ds_avg(\@seqs);
-    print W "$gene\t$dn_ds_t\t$dn_t\t$ds_t\t";
+    print W "$filename\t$dn_ds\t$dn\t$ds\n";
   }
 close W;
 
