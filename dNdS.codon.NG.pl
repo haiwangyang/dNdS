@@ -1,16 +1,9 @@
 #!/usr/bin/perl
 use warnings;
 use strict;
-use Bio::Perl;
-use lib "/home/haiwangyang/program/perl_lib/alignDB/lib";
-use YAML qw(Dump Load DumpFile LoadFile);
-use AlignDB::IntSpan;
-use AlignDB::Util;
-use Data::Dumper;;
 use List::MoreUtils qw(firstidx all any uniq );
 use List::Util qw(first max maxstr min minstr reduce shuffle sum);
 use Math::Combinatorics;
-use Statistics::Lite qw(mean);
 $|++;
 
 ######################################
@@ -41,7 +34,7 @@ foreach my $filename (glob "*.fa"){
     my %name2seq = get_hash_in_fasta($filename);
     my @seqs = values %name2seq;
     my ($dn_ds,$dn,$ds) = get_dn_ds_avg(\@seqs);
-    print W "$filename\t$dn\t$ds\tdn_ds\n";
+    print W "$filename\t$dn\t$ds\t$dn_ds\n";
   }
 close W;
 
